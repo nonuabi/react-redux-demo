@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { buyIceCream } from "../redux/index";
 
-const CakeContainer = (props) => {
+const IceCreamContainer = (props) => {
   return (
     <div>
       <h2>Number of iceCreams - {props.numOfIceCreams}</h2>
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CakeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(IceCreamContainer);
