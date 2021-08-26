@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+import axios from "axios";
 import {
   FETCH_USER_FAILURE,
   FETCH_USER_REQUEST,
@@ -19,5 +21,30 @@ export const fetchUserFailure = (error) => {
   return {
     type: FETCH_USER_FAILURE,
     payload: error,
+  };
+};
+
+export const fetchUsers = () => {
+  return (dispatch) => {
+    dispatch(fetchUserRequest);
+    axios
+      .get("https://my-json-server.typicode.com/nonuabi/Ecommerce-App-DB/posts")
+      .then((response) => {
+        dispatch(fetchUserSuccess(response.data));
+      })
+      .catch((err) => {
+        console.log("err", err);
+        dispatch(fetchUserFailure(err.message));
+      });
+    // fetch("https://my-json-server.typicode.com/nonuabi/Ecommerce-App-DB/posts")
+    //   .then((response) => {
+    //     const users = response.data;
+    //     console.log(response);
+    //     dispatch(fetchUserSuccess(users));
+    //   })
+    //   .catch((err) => {
+    //     const error = err.message;
+    //     dispatch(fetchUserFailure(error));
+    //   });
   };
 };

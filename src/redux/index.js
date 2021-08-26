@@ -5,4 +5,5 @@ export {
   fetchUserRequest,
   fetchUserSuccess,
   fetchUserFailure,
+  fetchUsers,
 } from "./user/userAction";
